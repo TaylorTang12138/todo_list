@@ -1,0 +1,77 @@
+{
+  "name": "todo_list",
+  "version": "0.1.0",
+  "private": true,
+  "main": "windows/mainWindow.js",
+  "homepage": "./",
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@fontsource/roboto": "^5.1.0",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "sass": "^1.79.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "concurrently \"pnpm start\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development pnpm window\"",
+    "production": "concurrently \"pnpm start\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=production pnpm window\"",
+    "start": "react-scripts start",
+    "window": " electron windows/mainWindow.js",
+    "build": "react-scripts build",
+    "build-mac": "electron-builder -m --arm64",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "build": {
+    "productName": "todo_list",
+    "appId": "todo_list.electron.app",
+    "files": [
+      "*/**",
+      "build/",
+      "windows/"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "icon": "public/icon.ico",
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "extends": null
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5",
+    "wait-on": "^8.0.1"
+  }
+}
