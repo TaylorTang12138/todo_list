@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-app-region: drag;
+
 }
 
 code {
@@ -21,6 +23,18 @@ code {
   --warningColor:#ffac33;
   --successColor:#4caf50;
   --borderColor:#F2F3F5;
+  --darkColor:#212829;
 }
 
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.no_drag{
+  -webkit-app-region: no-drag;
+}
 

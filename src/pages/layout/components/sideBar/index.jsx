@@ -1,25 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
 import { Add, FormatListBulleted } from "@mui/icons-material";
 // PostAdd
+
+import { getAllCustomGroup, addGroup } from "../../../../api/group";
 import { staticGroup } from "./conifg";
 
 const HEIGHTS = {
   userInfoHeight: "105px",
-  actionAreaHeight: "35px",
+  actionAreaHeight: "25px",
 };
 
 const SideWrapper = styled.div`
   width: 200px;
   height: 100vh;
   background-color: var(--borderColor);
-  padding: 0 10px;
+  padding: 10px 10px 10px 10px;
+
+  /* background-color: #e9ebec; */
 
   .user_info {
     padding: 10px 0;
     height: ${HEIGHTS.userInfoHeight};
-
+    /* border: 1px solid red; */
     .search_input {
       margin-top: 5px;
       .MuiInputBase-input {
@@ -34,13 +38,19 @@ const SideWrapper = styled.div`
   p {
     margin: 0;
   }
+  /* 
+  ::webkit-scrollbar {
+    display: none;
+  } */
 
   .all_group_wrapper {
     height: calc(
-      100vh - ${HEIGHTS.actionAreaHeight} - ${HEIGHTS.userInfoHeight}
+      100vh - ${HEIGHTS.actionAreaHeight} - ${HEIGHTS.userInfoHeight} - 20px
     );
+    /* border: 1px solid red; */
     font-size: 13px;
-    overflow: scroll;
+    scrollbar-width: none;
+    overflow-y: scroll;
 
     ul {
       list-style: none;
@@ -116,6 +126,7 @@ const SideWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* border: 1px solid red; */
 
     > * {
       cursor: pointer;
@@ -127,27 +138,51 @@ const SideWrapper = styled.div`
   }
 `;
 
-const SideBar = () => {
+const SideBar = (props) => {
+  const { changeGroup, changeSearchValue } = props;
   const [customGroup, setCustomGroup] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
   const [selGroup, setSelGroup] = useState("day");
   const [selCustomGroup, setselCustomGroup] = useState("");
 
+  useEffect(() => {
+    getCustomGroup();
+  }, []);
+
+  // done: 获取所有自定义组
+  const getCustomGroup = async () => {
+    const { data } = await getAllCustomGroup();
+    setCustomGroup(data.list);
+  };
+
   // done: 添加自定义列表组
-  const addCustomGroup = () => {
-    setCustomGroup([
-      ...customGroup,
-      { label: "无标题列表", type: `custom_${Math.random()}` },
-    ]);
+  const addCustomGroup = async () => {
+    const { message } = await addGroup({
+      label: "无标题列表_" + (customGroup.length + 1),
+      type: `custom_${Math.random()}`,
+    });
+
+    if (message === "success") {
+      getCustomGroup();
+    }
   };
 
   return (
     <SideWrapper>
-      <div className="user_info">
-        <h3>Taylor Tang</h3>
-        <p>xxxxxxx@qq.com</p>
-        <TextField label="search" variant="standard" />
+      <div className="user_info no_drag">
+        <h3>Development✨</h3>
+        {/* <p>xxxxxxx@qq.com</p> */}
+        <TextField
+          label="search"
+          variant="standard"
+          value={searchValue}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+            changeSearchValue(e.target.value);
+          }}
+        />
       </div>
-      <div className="all_group_wrapper">
+      <div className="all_group_wrapper no_drag">
         <ul className="group_list">
           {staticGroup.map((item) => {
             return (
@@ -155,6 +190,7 @@ const SideBar = () => {
                 key={item.type}
                 active={(item.type === selGroup).toString()}
                 onClick={() => {
+                  changeGroup(item);
                   setSelGroup(item.type);
                 }}
               >
@@ -175,6 +211,7 @@ const SideBar = () => {
                 key={item.type}
                 active={(item.type === selCustomGroup).toString()}
                 onClick={() => {
+                  changeGroup(item);
                   setselCustomGroup(item.type);
                 }}
               >
@@ -189,8 +226,8 @@ const SideBar = () => {
           })}
         </ul>
       </div>
-      <div className="action_area">
-        <span onClick={() => addCustomGroup()}>
+      <div className="action_area no_drag">
+        <span onClick={addCustomGroup}>
           <Add sx={{ fontSize: 18 }}></Add>
           新建列表
         </span>

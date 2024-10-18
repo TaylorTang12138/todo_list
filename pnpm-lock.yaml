@@ -32,6 +32,9 @@ importers:
       '@testing-library/user-event':
         specifier: ^13.5.0
         version: 13.5.0(@testing-library/dom@8.20.1)
+      axios:
+        specifier: ^1.7.7
+        version: 1.7.7
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -54,12 +57,18 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      customize-cra:
+        specifier: ^1.0.0
+        version: 1.0.0
       electron:
         specifier: ^32.1.2
         version: 32.1.2
       electron-builder:
         specifier: ^25.0.5
         version: 25.0.5(electron-builder-squirrel-windows@25.0.5(dmg-builder@25.0.5))
+      react-app-rewired:
+        specifier: ^2.2.1
+        version: 2.2.1(react-scripts@5.0.1(@babel/plugin-syntax-flow@7.24.7(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.25.2(@babel/core@7.25.2))(@types/babel__core@7.20.5)(eslint@8.57.1)(react@18.3.1)(sass@1.79.3)(type-fest@0.21.3)(typescript@5.6.2))
       wait-on:
         specifier: ^8.0.1
         version: 8.0.1
@@ -2619,6 +2628,9 @@ packages:
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
+  customize-cra@1.0.0:
+    resolution: {integrity: sha512-DbtaLuy59224U+xCiukkxSq8clq++MOtJ1Et7LED1fLszWe88EoblEYFBJ895sB1mC6B4uu3xPT/IjClELhMbA==}
+
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
 
@@ -4284,6 +4296,9 @@ packages:
   lodash.flatten@4.4.0:
     resolution: {integrity: sha512-C5N2Z3DgnnKr0LOpv/hKCgKdb7ZZwafIrsesve6lmzvZIRZRGaZ/l6Q8+2W7NaT+ZwO3fFlSCzCzrDCFdJfZ4g==}
 
+  lodash.flow@3.5.0:
+    resolution: {integrity: sha512-ff3BX/tSioo+XojX4MOsOMhJw0nZoUEF011LX8g8d3gvjVbxd89cCio4BCXronjxcTUIJUoqKEUA+n4CqvvRPw==}
+
   lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
 
@@ -5347,6 +5362,12 @@ packages:
     resolution: {integrity: sha512-sZ41cxiU5llIB003yxxQBYrARBqe0repqPTTYBTmMqTz9szeBbE37BehCE891NZsmdZqqP+xWKdT3eo3vOzN8w==}
     engines: {node: '>=14'}
 
+  react-app-rewired@2.2.1:
+    resolution: {integrity: sha512-uFQWTErXeLDrMzOJHKp0h8P1z0LV9HzPGsJ6adOtGlA/B9WfT6Shh4j2tLTTGlXOfiVx6w6iWpp7SOC5pvk+gA==}
+    hasBin: true
+    peerDependencies:
+      react-scripts: '>=2.1.3'
+
   react-dev-utils@12.0.1:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
@@ -5660,6 +5681,10 @@ packages:
 
   semver-compare@1.0.0:
     resolution: {integrity: sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==}
+
+  semver@5.7.2:
+    resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
+    hasBin: true
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -9824,6 +9849,10 @@ snapshots:
 
   csstype@3.1.3: {}
 
+  customize-cra@1.0.0:
+    dependencies:
+      lodash.flow: 3.5.0
+
   damerau-levenshtein@1.0.8: {}
 
   data-urls@2.0.0:
@@ -12023,6 +12052,8 @@ snapshots:
 
   lodash.flatten@4.4.0: {}
 
+  lodash.flow@3.5.0: {}
+
   lodash.isplainobject@4.0.6: {}
 
   lodash.memoize@4.1.2: {}
@@ -13068,6 +13099,11 @@ snapshots:
       regenerator-runtime: 0.13.11
       whatwg-fetch: 3.6.20
 
+  react-app-rewired@2.2.1(react-scripts@5.0.1(@babel/plugin-syntax-flow@7.24.7(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.25.2(@babel/core@7.25.2))(@types/babel__core@7.20.5)(eslint@8.57.1)(react@18.3.1)(sass@1.79.3)(type-fest@0.21.3)(typescript@5.6.2)):
+    dependencies:
+      react-scripts: 5.0.1(@babel/plugin-syntax-flow@7.24.7(@babel/core@7.25.2))(@babel/plugin-transform-react-jsx@7.25.2(@babel/core@7.25.2))(@types/babel__core@7.20.5)(eslint@8.57.1)(react@18.3.1)(sass@1.79.3)(type-fest@0.21.3)(typescript@5.6.2)
+      semver: 5.7.2
+
   react-dev-utils@12.0.1(eslint@8.57.1)(typescript@5.6.2)(webpack@5.95.0):
     dependencies:
       '@babel/code-frame': 7.24.7
@@ -13502,6 +13538,8 @@ snapshots:
 
   semver-compare@1.0.0:
     optional: true
+
+  semver@5.7.2: {}
 
   semver@6.3.1: {}
 

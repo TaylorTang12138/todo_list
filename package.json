@@ -1,5 +1,5 @@
 {
-  "name": "todo_list",
+  "name": "todo",
   "version": "0.1.0",
   "private": true,
   "main": "windows/mainWindow.js",
@@ -13,6 +13,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -21,13 +22,13 @@
   },
   "scripts": {
     "dev": "concurrently \"pnpm start\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development pnpm window\"",
-    "production": "concurrently \"pnpm start\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=production pnpm window\"",
-    "start": "react-scripts start",
+    "pro": "concurrently \"pnpm start\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=production pnpm window\"",
+    "start": "react-app-rewired start",
     "window": " electron windows/mainWindow.js",
-    "build": "react-scripts build",
+    "build": "react-app-rewired build",
     "build-mac": "electron-builder -m --arm64",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "build": {
     "productName": "todo_list",
@@ -70,8 +71,11 @@
   "devDependencies": {
     "concurrently": "^9.0.1",
     "cross-env": "^7.0.3",
+    "customize-cra": "^1.0.0",
     "electron": "^32.1.2",
     "electron-builder": "^25.0.5",
+    "react-app-rewired": "^2.2.1",
     "wait-on": "^8.0.1"
-  }
+  },
+  "proxy": "http://localhost:3001/"
 }
