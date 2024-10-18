@@ -14,9 +14,9 @@ build-mac: Package electron app for mac(need run build first)
 
 # Intro
 
-[login.png](https://postimg.cc/svtC5ddf)
+<img src="https://i.ibb.co/ssRxqdn/login.png" alt="login" border="0" />
 
-[panel.png](https://postimg.cc/FdP2RwV4)
+<img src="https://i.ibb.co/jzDrt0V/panel.png" alt="panel" border="0" />
 
 # Server
 
