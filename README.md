@@ -14,9 +14,9 @@ build-mac: Package electron app for mac(need run build first)
 
 # Intro
 
-[!Login]('https://github.com/TaylorTang12138/todo_list/blob/main/src/assets/images/preview/login.png?raw=true')
+[login.png](https://postimg.cc/svtC5ddf)
 
-[!Panel]('https://github.com/TaylorTang12138/todo_list/blob/main/src/assets/images/preview/panel.png?raw=true')
+[panel.png](https://postimg.cc/FdP2RwV4)
 
 # Server
 
